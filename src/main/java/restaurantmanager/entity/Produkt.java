@@ -19,9 +19,11 @@ public class Produkt implements Identifiable{
     private String name;
     private String description;
     private double price;
-    private Date date;
+    private Date man_date;
+    private Date mod_date;
     private Categories categorie;
     private taxClass taxclass;
+    private boolean has_picture;
 
     @Override
     public void setId(long id) {
@@ -42,7 +44,7 @@ public class Produkt implements Identifiable{
         this.name = name;
         this.description = description;
         this.price = price;
-        this.date = new Date();
+        this.man_date = new Date();
         this.categorie = categorie;
         this.taxclass = taxclass;
     }
@@ -60,11 +62,7 @@ public class Produkt implements Identifiable{
     public double getPrice() {
         return price;
     }
-
-    public Date getDate() {
-        return date;
-    }
-
+    
     public Categories getCategorie() {
         return categorie;
     }
@@ -73,7 +71,18 @@ public class Produkt implements Identifiable{
         return taxclass;
     }
 
+    public Date getMan_date() {
+        return man_date;
+    }
 
+    public Date getMod_date() {
+        return mod_date;
+    }
+
+    public boolean isHas_picture() {
+        return has_picture;
+    }
+    
     public void setName(String name) {
         this.name = name;
     }
@@ -86,10 +95,6 @@ public class Produkt implements Identifiable{
         this.price = price;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     public void setCategorie(Categories categorie) {
         this.categorie = categorie;
     }
@@ -98,16 +103,30 @@ public class Produkt implements Identifiable{
         this.taxclass = taxclass;
     }
 
+    public void setMan_date(Date man_date) {
+        this.man_date = man_date;
+    }
+
+    public void setMod_date(Date mod_date) {
+        this.mod_date = mod_date;
+    }
+
+    public void setHas_picture(boolean has_picture) {
+        this.has_picture = has_picture;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 31 * hash + (int) (this.pnr ^ (this.pnr >>> 32));
-        hash = 31 * hash + Objects.hashCode(this.name);
-        hash = 31 * hash + Objects.hashCode(this.description);
-        hash = 31 * hash + (int) (Double.doubleToLongBits(this.price) ^ (Double.doubleToLongBits(this.price) >>> 32));
-        hash = 31 * hash + Objects.hashCode(this.date);
-        hash = 31 * hash + Objects.hashCode(this.categorie);
-        hash = 31 * hash + Objects.hashCode(this.taxclass);
+        int hash = 3;
+        hash = 67 * hash + (int) (this.pnr ^ (this.pnr >>> 32));
+        hash = 67 * hash + Objects.hashCode(this.name);
+        hash = 67 * hash + Objects.hashCode(this.description);
+        hash = 67 * hash + (int) (Double.doubleToLongBits(this.price) ^ (Double.doubleToLongBits(this.price) >>> 32));
+        hash = 67 * hash + Objects.hashCode(this.man_date);
+        hash = 67 * hash + Objects.hashCode(this.mod_date);
+        hash = 67 * hash + Objects.hashCode(this.categorie);
+        hash = 67 * hash + Objects.hashCode(this.taxclass);
+        hash = 67 * hash + (this.has_picture ? 1 : 0);
         return hash;
     }
 
@@ -132,7 +151,10 @@ public class Produkt implements Identifiable{
         if (Double.doubleToLongBits(this.price) != Double.doubleToLongBits(other.price)) {
             return false;
         }
-        if (!Objects.equals(this.date, other.date)) {
+        if (!Objects.equals(this.man_date, other.man_date)) {
+            return false;
+        }
+        if (!Objects.equals(this.mod_date, other.mod_date)) {
             return false;
         }
         if (this.categorie != other.categorie) {
@@ -141,11 +163,14 @@ public class Produkt implements Identifiable{
         if (this.taxclass != other.taxclass) {
             return false;
         }
+        if (this.has_picture != other.has_picture) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Produkt{" + "pnr=" + pnr + ", name=" + name + ", description=" + description + ", price=" + price + ", date=" + date + ", categorie=" + categorie + ", taxclass=" + taxclass + '}';
+        return "Produkt{" + "pnr=" + pnr + ", name=" + name + ", description=" + description + ", price=" + price + ", man_date=" + man_date + ", mod_date=" + mod_date + ", categorie=" + categorie + ", taxclass=" + taxclass + ", has_picture=" + has_picture + '}';
     }
 }

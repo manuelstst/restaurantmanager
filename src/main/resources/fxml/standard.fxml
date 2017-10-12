@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane fx:id="standard_anchorpane" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxmlcontroller.StandardController">
+   <children>
+      <MenuBar fx:id="standard_menubar" layoutY="6.0" prefWidth="1219.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu fx:id="standard_datei_menuitem" mnemonicParsing="false" text="Datei">
+            <items>
+              <MenuItem id="standard_datei_einstellungen_menu" fx:id="standard_datei_einstellungen_menuitem" mnemonicParsing="false" onAction="#onEinstellungenClick" text="Einstellungen" />
+            </items>
+          </Menu>
+          <Menu fx:id="standard_sichern_menuitem" mnemonicParsing="false" text="Sichern">
+            <items>
+              <MenuItem fx:id="standard_sichern_backuperstellen_menuitem" mnemonicParsing="false" onAction="#onCreateBackup" text="Backup erstellen" />
+            </items>
+          </Menu>
+          <Menu fx:id="standard_hilfe_menuitem" mnemonicParsing="false" text="Hilfe">
+            <items>
+              <MenuItem fx:id="standard_hilfe_hilfeanzeigen_menuitem" mnemonicParsing="false" text="Hilfe anzeigen (F1)" />
+            </items>
+          </Menu>
+            <Menu fx:id="standard_info_menuitem" mnemonicParsing="false" text="Info">
+               <items>
+                  <MenuItem fx:id="standard_info_ueberkms_menuitem" mnemonicParsing="false" onAction="#handleKMSInfoMenuItemAction" text="Über KMS" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <SplitPane fx:id="standard_splitpane" dividerPositions="0.20788824979457682" layoutY="47.0" prefWidth="1219.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0">
+        <items>
+          <AnchorPane fx:id="standard_anchorpane_left" minHeight="0.0" minWidth="0.0" prefHeight="516.0" prefWidth="0.0" SplitPane.resizableWithParent="false">
+               <children>
+                  <GridPane layoutY="12.0" prefHeight="447.0" prefWidth="163.0" AnchorPane.bottomAnchor="236.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints percentHeight="0.0" vgrow="SOMETIMES" />
+                        <RowConstraints percentHeight="0.0" vgrow="SOMETIMES" />
+                        <RowConstraints percentHeight="0.0" vgrow="SOMETIMES" />
+                        <RowConstraints percentHeight="0.0" vgrow="SOMETIMES" />
+                        <RowConstraints percentHeight="0.0" vgrow="SOMETIMES" />
+                        <RowConstraints percentHeight="0.0" vgrow="SOMETIMES" />
+                        <RowConstraints percentHeight="0.0" vgrow="SOMETIMES" />
+                      <RowConstraints percentHeight="0.0" vgrow="SOMETIMES" />
+                      <RowConstraints percentHeight="0.0" vgrow="SOMETIMES" />
+                        <RowConstraints percentHeight="0.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button fx:id="standard_statistiken_button" mnemonicParsing="false" onAction="#handleStatistikenButtonAction" prefWidth="250.0" text="Statistiken" GridPane.rowIndex="8" />
+                        <Button fx:id="standard_home_button" mnemonicParsing="false" onAction="#handleHomeButtonAction" prefWidth="250.0" text="Home" />
+                        <Button fx:id="standard_bestellungen_button" mnemonicParsing="false" onAction="#handleBestellungenButtonAction" prefWidth="250.0" text="Bestellungen" GridPane.rowIndex="3" />
+                        <Button fx:id="standard_rechnungen_button" mnemonicParsing="false" onAction="#handleRechnungenButtonAction" prefWidth="250.0" text="Rechnungen" GridPane.rowIndex="4" />
+                        <Button fx:id="standard_produkte_button" mnemonicParsing="false" onAction="#handleProdukteButtonAction" prefWidth="250.0" text="Produkte" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane fx:id="standard_anchorpane_right" minHeight="0.0" minWidth="0.0" prefHeight="698.0" prefWidth="470.0" />
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

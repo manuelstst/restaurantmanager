@@ -11,6 +11,7 @@ public class Rechnung implements Identifiable {
     private long rNr;
     private int tableNr;
     private Date man_date;
+    private Date acc_date;
     private List<Produkt> products = new ArrayList<>();
     private Status status;
     //private DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
@@ -32,11 +33,11 @@ public class Rechnung implements Identifiable {
     public Rechnung() {
     }
 
-    public Rechnung(long rNr, int tableNr, Status status) {
+    public Rechnung(long rNr, int tableNr) {
         this.rNr = rNr;
         this.tableNr = tableNr;
         this.man_date = new Date();
-        this.status = status;
+        this.status = Status.OPEN;
     }
 
     public int getTableNr() {
@@ -47,12 +48,16 @@ public class Rechnung implements Identifiable {
         return man_date;
     }
 
-    public List<Produkt> getProducts() {
-        return products;
+    public Date getAcc_date() {
+        return acc_date;
     }
 
-    public Status Status() {
+    public Status getStatus() {
         return status;
+    }
+
+    public List<Produkt> getProducts() {
+        return products;
     }
 
     public void setTableNr(int tableNr) {
@@ -71,14 +76,19 @@ public class Rechnung implements Identifiable {
         this.status = status;
     }
 
+    public void setAcc_date(Date acc_date) {
+        this.acc_date = acc_date;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 43 * hash + (int) (this.rNr ^ (this.rNr >>> 32));
-        hash = 43 * hash + this.tableNr;
-        hash = 43 * hash + Objects.hashCode(this.man_date);
-        hash = 43 * hash + Objects.hashCode(this.products);
-        hash = 43 * hash + Objects.hashCode(this.status);
+        int hash = 7;
+        hash = 67 * hash + (int) (this.rNr ^ (this.rNr >>> 32));
+        hash = 67 * hash + this.tableNr;
+        hash = 67 * hash + Objects.hashCode(this.man_date);
+        hash = 67 * hash + Objects.hashCode(this.acc_date);
+        hash = 67 * hash + Objects.hashCode(this.products);
+        hash = 67 * hash + Objects.hashCode(this.status);
         return hash;
     }
 
@@ -100,6 +110,9 @@ public class Rechnung implements Identifiable {
         if (!Objects.equals(this.man_date, other.man_date)) {
             return false;
         }
+        if (!Objects.equals(this.acc_date, other.acc_date)) {
+            return false;
+        }
         if (!Objects.equals(this.products, other.products)) {
             return false;
         }
@@ -111,7 +124,7 @@ public class Rechnung implements Identifiable {
 
     @Override
     public String toString() {
-        return "Rechnung{" + "rNr=" + rNr + ", tableNr=" + tableNr + ", man_date=" + man_date + ", products=" + products + ", status=" + status + '}';
+        return "Rechnung{" + "rNr=" + rNr + ", tableNr=" + tableNr + ", man_date=" + man_date + ", acc_date=" + acc_date + ", products=" + products + ", status=" + status + '}';
     }
     
 }
