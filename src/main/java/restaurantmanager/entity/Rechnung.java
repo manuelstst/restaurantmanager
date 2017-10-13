@@ -6,9 +6,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 
 
-public class Rechnung implements Identifiable {
+public class Rechnung{
 
-    private long rNr;
+    private int id;
+    private int rNr;
     private int tableNr;
     private Date man_date;
     private Date acc_date;
@@ -16,14 +17,12 @@ public class Rechnung implements Identifiable {
     private Status status;
     //private DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
 
-    @Override
-    public void setId(long id) {
-        this.rNr = id;
+    public int getId() {
+        return id;
     }
 
-    @Override
-    public long getId() {
-        return this.rNr;
+    public void setId(int id) {
+        this.id = id;
     }
     
 
@@ -33,11 +32,13 @@ public class Rechnung implements Identifiable {
     public Rechnung() {
     }
 
-    public Rechnung(long rNr, int tableNr) {
+    public Rechnung(int id, int rNr, int tableNr, Date man_date, Date acc_date, Status status) {
+        this.id = id;
         this.rNr = rNr;
         this.tableNr = tableNr;
-        this.man_date = new Date();
-        this.status = Status.OPEN;
+        this.man_date = man_date;
+        this.acc_date = acc_date;
+        this.status = status;
     }
 
     public int getTableNr() {
@@ -60,6 +61,10 @@ public class Rechnung implements Identifiable {
         return products;
     }
 
+    public int getrNr() {
+        return rNr;
+    }
+
     public void setTableNr(int tableNr) {
         this.tableNr = tableNr;
     }
@@ -78,6 +83,10 @@ public class Rechnung implements Identifiable {
 
     public void setAcc_date(Date acc_date) {
         this.acc_date = acc_date;
+    }
+
+    public void setrNr(int rNr) {
+        this.rNr = rNr;
     }
 
     @Override

@@ -14,8 +14,10 @@ import java.util.Objects;
  *
  * @author Manuel
  */
-public class Produkt implements Identifiable{
-    private long pnr;
+public class Produkt{
+    
+    private int id;
+    private int pnr;
     private String name;
     private String description;
     private double price;
@@ -24,33 +26,37 @@ public class Produkt implements Identifiable{
     private Categories categorie;
     private taxClass taxclass;
     private boolean has_picture;
+    private boolean storno;
 
-    @Override
-    public void setId(long id) {
-        this.pnr = id;
+   
+    public int getId() {
+        return id;
     }
 
-    @Override
-    public long getId() {
-        return pnr;
+    public void setId(int id) {
+        this.id = id;
     }
     
     public Produkt(){
         
     }
-    
-    public Produkt(long pnr, String name, String description, double price,Categories categorie, taxClass taxclass) {
+
+    public Produkt(int id, int pnr, String name, String description, double price, Date man_date, Date mod_date, Categories categorie, taxClass taxclass, boolean has_picture, boolean storno) {
+        this.id = id;
         this.pnr = pnr;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.man_date = new Date();
+        this.man_date = man_date;
+        this.mod_date = mod_date;
         this.categorie = categorie;
         this.taxclass = taxclass;
+        this.has_picture = has_picture;
+        this.storno = storno;
     }
 
     
-
+    
     public String getName() {
         return name;
     }
@@ -81,6 +87,14 @@ public class Produkt implements Identifiable{
 
     public boolean isHas_picture() {
         return has_picture;
+    }
+
+    public boolean isStorno() {
+        return storno;
+    }
+
+    public int getPnr() {
+        return pnr;
     }
     
     public void setName(String name) {
@@ -115,18 +129,27 @@ public class Produkt implements Identifiable{
         this.has_picture = has_picture;
     }
 
+    public void setStorno(boolean storno) {
+        this.storno = storno;
+    }
+
+    public void setPnr(int pnr) {
+        this.pnr = pnr;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 67 * hash + (int) (this.pnr ^ (this.pnr >>> 32));
-        hash = 67 * hash + Objects.hashCode(this.name);
-        hash = 67 * hash + Objects.hashCode(this.description);
-        hash = 67 * hash + (int) (Double.doubleToLongBits(this.price) ^ (Double.doubleToLongBits(this.price) >>> 32));
-        hash = 67 * hash + Objects.hashCode(this.man_date);
-        hash = 67 * hash + Objects.hashCode(this.mod_date);
-        hash = 67 * hash + Objects.hashCode(this.categorie);
-        hash = 67 * hash + Objects.hashCode(this.taxclass);
-        hash = 67 * hash + (this.has_picture ? 1 : 0);
+        hash = 11 * hash + (int) (this.pnr ^ (this.pnr >>> 32));
+        hash = 11 * hash + Objects.hashCode(this.name);
+        hash = 11 * hash + Objects.hashCode(this.description);
+        hash = 11 * hash + (int) (Double.doubleToLongBits(this.price) ^ (Double.doubleToLongBits(this.price) >>> 32));
+        hash = 11 * hash + Objects.hashCode(this.man_date);
+        hash = 11 * hash + Objects.hashCode(this.mod_date);
+        hash = 11 * hash + Objects.hashCode(this.categorie);
+        hash = 11 * hash + Objects.hashCode(this.taxclass);
+        hash = 11 * hash + (this.has_picture ? 1 : 0);
+        hash = 11 * hash + (this.storno ? 1 : 0);
         return hash;
     }
 
@@ -166,11 +189,15 @@ public class Produkt implements Identifiable{
         if (this.has_picture != other.has_picture) {
             return false;
         }
+        if (this.storno != other.storno) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Produkt{" + "pnr=" + pnr + ", name=" + name + ", description=" + description + ", price=" + price + ", man_date=" + man_date + ", mod_date=" + mod_date + ", categorie=" + categorie + ", taxclass=" + taxclass + ", has_picture=" + has_picture + '}';
+        return "Produkt{" + "pnr=" + pnr + ", name=" + name + ", description=" + description + ", price=" + price + ", man_date=" + man_date + ", mod_date=" + mod_date + ", categorie=" + categorie + ", taxclass=" + taxclass + ", has_picture=" + has_picture + ", storno=" + storno + '}';
     }
+    
 }

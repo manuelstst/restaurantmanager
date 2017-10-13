@@ -83,8 +83,10 @@ public class StandardController {
     private AnchorPane statistikPane;
     private AnchorPane produktPane;
     private AnchorPane bestellungenPane;
+    private AnchorPane rechnungenPane;
     private ProduktController produktcontroller;
     private BestellungenController bestellungencontroller;
+    private RechnungenController rechnungencontroller;
 
     @FXML
     void handleBestellungenButtonAction(ActionEvent event) {
@@ -134,6 +136,7 @@ public class StandardController {
 
     @FXML
     void handleRechnungenButtonAction(ActionEvent event) {
+        /*
         logger.debug("Rechnung Button wurde gedrückt!");
         FXMLLoader rechnungsloader = null;
         try {
@@ -150,6 +153,20 @@ public class StandardController {
             logger.debug("Rechnung wurde geladen!");
         } catch (IOException ex) {
             logger.error("Konnte nicht laden", ex);
+        }*/
+        FXMLLoader rechnungenloader;
+        try {          
+            rechnungenloader = new FXMLLoader(getClass().getResource("/fxml/rechnungen.fxml"));
+            rechnungencontroller = rechnungenloader.<RechnungenController>getController();
+            rechnungenPane = rechnungenloader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(rechnungenPane));
+            //Used for updating the HomeScreen
+            rechnungenPane.prefWidthProperty().bind(standard_anchorpane_right.widthProperty());
+            rechnungenPane.prefHeightProperty().bind(standard_anchorpane_right.heightProperty());
+            standard_anchorpane_right.getChildren().add(rechnungenPane);
+        } catch (IOException ex) {
+            logger.error("Konnte Home nicht laden", ex);
         }
     }
 

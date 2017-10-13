@@ -15,7 +15,7 @@ public class ConnectionManager {
 	private Connection connection = null;
 	// Constants for your favourite JDBC-Connection (default connection)
 	public final static String DB_URL = "jdbc:mysql://localhost:3306";
-	public final static String DATABASE = "pbp";
+	public final static String DATABASE = "restaurant";
 	public final static String USER = "sqluser";
 	public final static String PASSWORD = "12init34";
 	private String connectionUrl = DB_URL + "/" + DATABASE;

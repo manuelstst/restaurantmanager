@@ -656,3 +656,5 @@ Caused by: java.lang.ClassNotFoundException: fxmlcontroller.ProduktController
 	... 73 more
 2017-10-12 19:22:29 DEBUG StandardController:113 - Produkt Button wurde gedrückt!
 2017-10-12 19:22:29 DEBUG StandardController:121 - Positionen wurde geladen!
+2017-10-13 11:42:38 DEBUG StandardController:175 - Statistiken Button wurde gedrückt!
+2017-10-13 11:42:51 DEBUG StandardController:175 - Statistiken Button wurde gedrückt!
